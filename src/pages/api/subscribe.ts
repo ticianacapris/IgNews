@@ -52,12 +52,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       payment_method_types: ['card'],
       billing_address_collection: 'required',
       line_items: [
-        {price :'price_1L7T0OGMng5XPWWSFd1dqyAY', quantity: 1}
+        {price :'price_1L5plwC6igLJQJWinz3wOjP0', quantity: 1}
       ],
       mode: 'subscription',
       allow_promotion_codes:true,
-      success_url: 'https://ignews-inanbruneli.vercel.app/posts',
-      cancel_url: 'https://ignews-inanbruneli.vercel.app/posts'
+      success_url: process.env.STRIPE_SUCCESS_URL,
+      cancel_url: process.env.STRIPE_CANCEL_URL
     })
 
     return res.status(200).json({sessionId: StripeCheckoutSession.id})
